@@ -1,40 +1,40 @@
 #protospace(db設計)
  ====
 
-##モデル テーブル  
-+product
-+products
- -:title
- -:image
- -:catch_copy
- -:concept
+##テーブル  
+##productsテーブル　　
 
-+comment
-+comments
- -:text
- -:product_id
- -:user_id
+ * :title
+ * :image
+ * :catch_copy
+ * :concept
+ * created_at
+ * updated_at
 
- +user
- +users
-  -:avatar
-  -:nickname
-  -:password
-  -:member
-  -:profile
-  -:works
-  -:product_id
+##commentsテーブル
+* :text
+* :product_id
+* :user_id
 
-  +tag
-  +tags(gem)
-   -:text
-   -product_id
-   -:user_id)
+##usersテーブル
+ * :avatar
+ * :nickname
+ * :password
+ * :member
+ * :profile
+ * :works
+ * :product_id
+
+##tags(gem)
+ * :text
+ * :product_id
+ * :user_id
+
 
 
 ##アソシエーション
-      +user -> products  
-      +user -> comments  
-      +product -> comments  
-      +product -> tags  
-      +tag -> products  
+      user -> products  
+      user -> comments  
+      product -> comments  
+      product -> tags  
+      tag -> products  
