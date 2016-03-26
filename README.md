@@ -2,39 +2,55 @@
  ====
 
 ##テーブル  
-##productsテーブル　　
+##productsテーブル
+|colum name |
+|:---------:|
+|:title     |
+|:image1    |
+|:image2    |
+|:image3    |
+|:catch_copy|
+|:concept   |
+|created_at |
+|updated_at |
 
- * :title
- * :image
- * :catch_copy
- * :concept
- * created_at
- * updated_at
 
-##commentsテーブル
-* :text
-* :product_id
-* :user_id
+##commentsテーブル　　
+|column name|
+|:---------:|
+|:text      |
+|:product_id|
+|:user_id   |
 
-##usersテーブル
- * :avatar
- * :nickname
- * :password
- * :member
- * :profile
- * :works
- * :product_id
+##usersテーブル　　
+
+|column name|
+|:---------:|
+|:password  |
+|:email     |
+|:member    |
+|:profile   |
+|:works     |
+
 
 ##tags(gem)
- * :text
- * :product_id
- * :user_id
+|column name|
+|:----------|
+|:text      |
+|:product_id|
+|:user_id   |
+
+##likes
+|column name|
+|:---------:|
+|:user_id   |
+|:product_id|
 
 
 
 ##アソシエーション
-      user -> products  
-      user -> comments  
-      product -> comments  
-      product -> tags  
-      tag -> products  
+user *has_many* products  
+user *has_many* comments  
+product *has_many* comments  
+product *has_many* tags  
+tag *has_many* products  
