@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :catch_copy
       t.string :concept
 
-      t.timestamps null: false
+      t.timestamps 
     end
   end
 end
