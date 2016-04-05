@@ -7,7 +7,7 @@
             %img.media-object{alt: "64x64", date: { holder: { rendered: true}}, data: { src: "holder.js/64x64"}, src: "", style: "width: 64px; height: 64px;"}/
         .media-body
           %h4#top-aligned-media.media-heading
-            Top aligned media
+            = @product.title
           .proto-user
             %a{href: ""} by User
             %span.degree we-b inc. Designer
@@ -22,9 +22,9 @@
     .col-md-3
       %ul.proto-sub-list.list-group
         %li.list-group-item
-          = image_tag("sample.png", class: 'img-responsive')
+          = image_tag("sample.jpg", class: 'img-responsive')
         %li.list-group-item
-          = image_tag("sample.png", class: 'img-responsive')
+          = image_tag("sample.jpg", class: 'img-responsive')
         %li.list-group-item
           = image_tag("sample.jpg", class: 'img-responsive')
   .row.proto-description
