@@ -31,6 +31,8 @@
 |:member    |
 |:profile   |
 |:works     |
+|:avatar    |
+|:nickname  |
 
 
 ##tags(gem)
