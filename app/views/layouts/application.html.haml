@@ -1,12 +1,24 @@
 !!!
 %html
   %head
+    %meta{content: "text/html; charset=US-ASCII", "http-equiv" => "Content-Type"}/
     %titleProtospace
       = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
       = javascript_include_tag 'application', 'data-turbolinks-track' => true
       = csrf_meta_tags
   %body
+    - if notice
+      %p
+        .alert.alert-notice
+        = notice
+    -if alert
+      %p
+        .alert.alert-error
+        = alert
+    = render "layouts/header"
     = yield
+    = render "layouts/footer"
+
 
 
 
