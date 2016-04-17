@@ -7,7 +7,6 @@
     %a.navbar-brand(href="/")
       = image_tag("logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "36px")
     .navbar-collapse.collapse.navbar-responsive-collapse
-    %p
       -if user_signed_in?
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
@@ -25,6 +24,6 @@
       -else
         %ul.nav.navbar-nav.navbar-right
           %li
-            .btn.btn-primary.navbar-btn
-              = link_to "Get Started",new_user_session_path
+          .btn.btn-primary.navbar-btn
+            = link_to "Get Started",new_user_session_path
 
