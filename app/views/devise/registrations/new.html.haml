@@ -10,10 +10,10 @@
               =f.text_field :nickname,placeholder: "nickname"
             .user-image.col-md-2
               %button.btn.btn-primary Add image
-            .user-email
-              = f.email_field :email,placeholder: "email",autofocus: true
-            .user-password
-              = f.password_field :password,placeholder: "password",autocomplete: "off"
+          .user-email
+            = f.email_field :email,placeholder: "email",autofocus: true
+          .user-password
+            = f.password_field :password,placeholder: "password",autocomplete: "off"
         .col-md-12
           %h4 Member of
           .user-user-member.row
@@ -28,5 +28,4 @@
             .user-name.col-md-12
               =f.text_field :works ,placeholder: "Works"
       .row.text-center.user-btn
-        .btn.btn-lg.btn-primary.btn-block
-          = f.submit "save"
+        = f.submit "save",class: "btn btn-lg btn-primary btn-block"
