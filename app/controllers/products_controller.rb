@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    Product.create(title: create_params[:title],image1: create_params[:image1],image2: create_params[:image2],image3: create_params[:image3],catch_copy: create_params[:catch_copy],concept: create_params[:concept] ,user_id: current_user.id)
+    current_user.products.create(create_params)
     redirect_to '/'
   end
 
@@ -17,6 +17,6 @@ class ProductsController < ApplicationController
 
   private
     def create_params
-      params.require(:product).permit(:title,:image1,:image2,:image3,:catch_copy,:concept)
+      params.require(:product).permit(:title,:image1,:image2,:image3,:catch_copy,:concept).merge(user_id: params[:user_id])
     end
 end
