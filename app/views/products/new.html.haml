@@ -1,5 +1,10 @@
 .container.proto-new
   = form_for @product do |f|
+    -if @product.errors.any?
+      %ul
+        = @product.errors.full_messages.each do |message|
+          %li
+            = message
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
@@ -33,5 +38,6 @@
               %input{:type => "text", :placeholder => "UI"}/
             .col-md-3
               %input{:type => "text", :placeholder => "Application"}/
+        = f.hidden_field :user_id
       .row.text-center.proto-btn
         =f.submit "Publish",class: "btn btn-lg btn-primary btn-block"
