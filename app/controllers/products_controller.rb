@@ -3,12 +3,16 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product= Product.new(user_id: current_user.id)
   end
 
   def create
-    current_user.products.create(create_params)
-    redirect_to '/'
+    @product = Product.new(create_params)
+     if @product.save
+      redirect_to "/"
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -17,6 +21,6 @@ class ProductsController < ApplicationController
 
   private
     def create_params
-      params.require(:product).permit(:title,:image1,:image2,:image3,:catch_copy,:concept).merge(user_id: params[:user_id])
+      params.require(:product).permit(:title,:image1,:image2,:image3,:catch_copy,:concept,:user_id)
     end
 end
