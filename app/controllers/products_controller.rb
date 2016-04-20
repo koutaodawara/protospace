@@ -3,15 +3,15 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product= Product.new(user_id: current_user.id)
+    @product= Product.new
   end
 
   def create
-    @product = Product.new(create_params)
-     if @product.save
-      redirect_to "/"
+    @product = current_user.products.new(create_params)
+    if @product.save
+      redirect_to root_path
     else
-      render 'new'
+      render new_product_path
     end
   end
 
