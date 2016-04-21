@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = current_user.products.new(register_params)
+    @product = current_user.products.new(product_params)
     if @product.save
       redirect_to root_path
     else
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   end
 
   private
-    def register_params
-      params.require(:product).permit(:title,:image1,:image2,:image3,:catch_copy,:concept,:user_id)
+    def product_params
+      params.require(:product).permit(:title,:image1,:image2,:image3,:catch_copy,:concept)
     end
 end
