@@ -10,6 +10,7 @@
               =f.text_field :nickname,placeholder: "nickname"
             .user-image.col-md-2
               %button.btn.btn-primary Add image
+              = f.file_field :avatar
           .user-email
             = f.email_field :email,placeholder: "email",autofocus: true
           .user-password
