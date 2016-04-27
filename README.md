@@ -6,9 +6,6 @@
 |colum name |
 |:---------:|
 |:title     |
-|:image1    |
-|:image2    |
-|:image3    |
 |:catch_copy|
 |:concept   |
 |created_at |
@@ -47,6 +44,15 @@
 |:---------:|
 |:user_id   |
 |:product_id|
+
+##pictures
+|column name|
+|:----------|
+|:enum      |
+|:product_id|
+|:image     |
+
+enum = :status: {main: 0,sub1: 1,sub2:2}
 
 
 

@@ -3,8 +3,7 @@
     .col-md-6
       .media
         .media-left
-          %a{href: "#"} 
-            %img.media-object{alt: "64x64", date: { holder: { rendered: true}}, data: { src: "holder.js/64x64"}, src: "", style: "width: 64px; height: 64px;"}/
+          = image_tag(@product.user.avatar, alt: "64×64", class: "media-object", style: "width: 64px; height: 64px;")
         .media-body
           %h4#top-aligned-media.media-heading
             = @product.title

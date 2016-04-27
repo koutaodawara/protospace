@@ -17,21 +17,20 @@
     .col-sm-4.col-md-3.proto-content
       - @products.each do |product|
         .thumbnail
-          %a{href: ""}
-            = image_tag("sample.png")
-            .caption
-              %h3
-                = link_to product.title,product_path(product.id)
-              .proto-meta
-                .proto-user
-                  = product.user.nickname
-                .proto-posted
-                  = product.created_at
-              %ul.proto-tag-list.list-inline
-                %li 
-                  %a{href: "#", class: "btn btn-default"} iPad
-                %li 
-                  %a{href: "#", class: "btn btn-default"} wireframe
+          = image_tag("sample.png")
+          .caption
+            %h3
+              = link_to product.title,product_path(product.id)
+            .proto-meta
+              .proto-user
+                = product.user.nickname
+              .proto-posted
+                = product.created_at
+            %ul.proto-tag-list.list-inline
+              %li 
+                %a{href: "#", class: "btn btn-default"} iPad
+              %li 
+                %a{href: "#", class: "btn btn-default"} wireframe
 
 .text-center
   %ul.pagination
