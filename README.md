@@ -64,3 +64,5 @@ product *has_many* tags
 tag *has_many* products  
 user *has_many* likes  
 products *has_many* likes  
+products has_many pictures
+pictures belongs_to product

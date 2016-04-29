@@ -1,3 +1,4 @@
 class Picture < ActiveRecord::Base
-  enum status: [:main, :sub1]
+  enum status: [:main, :sub]
+  belongs_to :product
 end
