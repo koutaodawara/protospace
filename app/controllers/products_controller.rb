@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
   def new
     @product= Product.new
+    @product.pictures.build
   end
 
   def create
@@ -22,6 +23,6 @@ class ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:title,:image1,:image2,:image3,:catch_copy,:concept)
+      params.require(:product).permit(:title,:catch_copy,:concept, pictures_attributes: [:image,:status,:product_id])
     end
 end
