@@ -1,4 +1,5 @@
 class Picture < ActiveRecord::Base
-  enum status: [:main, :sub]
-  belongs_to :product
+   enum status: [:main, :sub]
+   mount_uploader :image, PictureUploader
+   belongs_to :product
 end
