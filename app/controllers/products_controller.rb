@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
+      flash.now[:notice] = "保存できませんでした"
       render new_product_path
     end
   end
