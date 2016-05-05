@@ -6,9 +6,10 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   version :image do
-    process :resize_to_fit => [210, 200]
+    process :resize_to_fit => [600, 500]
   end
 
   image = PictureUploader.new
   image.store!('noimage-big.png')
+
 end
