@@ -17,7 +17,7 @@
     .col-sm-4.col-md-3.proto-content
       - @products.each do |product|
         .thumbnail
-          = image_tag("sample.png")
+          = image_tag(product.pictures.main[0].image) if product.pictures.main.first
           .caption
             %h3
               = link_to product.title,product_path(product.id)

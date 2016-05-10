@@ -1,7 +1,14 @@
 class Product < ActiveRecord::Base
   belongs_to :user
-   validates :title,:concept,:catch_copy ,presence: true
-   # validates :image1, presence: true
-   # validates :image2, presence: true
-   # validates :image3, presence: true
+  has_many :pictures,inverse_of: :product,dependent: :delete_all
+  accepts_nested_attributes_for :pictures
+  validates :title,:concept,:catch_copy,presence: true
+
+    def reject_picture(attributed)
+    attributed['image'].blank?
+    end
+
+    def extension_white_list
+    %w(jpg jpeg gif png)
+  end
 end

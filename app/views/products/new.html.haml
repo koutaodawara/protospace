@@ -1,5 +1,5 @@
 .container.proto-new
-  = form_for @product do |f|
+  = form_for(@product) do |f|
     -if @product.errors.any?
       %ul
         = @product.errors.full_messages.each do |message|
@@ -13,14 +13,21 @@
       .row
         .col-md-12
           .cover-image-upload
-            =f.file_field :image1
+            = f.fields_for :pictures do |a|
+              = a.file_field :image
+              = a.hidden_field :status, value: "main"
         .col-md-12
           %ul.proto-sub-list.list-group
             %li.list-group-item.col-md-4
               .image-upload
+                = f.fields_for :pictures do |a|
+                  = a.file_field :image
+                  = a.hidden_field :status, value: "sub"
             %li.list-group-item.col-md-4
               .image-upload
-                =f.file_field :image3, multipart: "true"
+                = f.fields_for :pictures do |a|
+                  = a.file_field :image
+                  = a.hidden_field :status, value: "sub"
             %li.list-group-item.col-md-4
               .image-upload-plus
                 %span +
