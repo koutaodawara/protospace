@@ -13,12 +13,12 @@
       .row
         .col-md-12
           .cover-image-upload
-            = f.fields_for :pictures ,@product.pictures.main[0] do |a|
+            = f.fields_for :pictures, @product.pictures.main[0] do |a|
               = a.file_field :image
               = a.hidden_field :status, value: "main"
         .col-md-12
           %ul.proto-sub-list.list-group
-            = f.fields_for :pictures,@pro_sub do |a|
+            = f.fields_for :pictures, @sub_img do |a|
               %li.list-group-item.col-md-4
                 .image-upload
                   = a.file_field :image
@@ -41,4 +41,4 @@
             .col-md-3
               %input{ type: "text", placeholder: "Application" }/
       .row.text-center.proto-btn
-        =f.submit "Publish",class: "btn btn-lg btn-primary btn-block"
+        =f.submit "Publish", class: "btn btn-lg btn-primary btn-block"
