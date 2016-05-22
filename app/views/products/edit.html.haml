@@ -18,12 +18,11 @@
               = a.hidden_field :status, value: "main"
         .col-md-12
           %ul.proto-sub-list.list-group
-            - 2.times do |i|
+            = f.fields_for :pictures,@pro_sub do |a|
               %li.list-group-item.col-md-4
                 .image-upload
-                  = f.fields_for :pictures,@product.pictures.sub[i] do |a|
-                    = a.file_field :image
-                    = a.hidden_field :status, value: "sub"
+                  = a.file_field :image
+                  = a.hidden_field :status, value: "sub"
             %li.list-group-item.col-md-4
               .image-upload-plus
                 %span +
@@ -36,10 +35,10 @@
           %h4 Tag List
           .row
             .col-md-3
-              %input{ :type => "text", :placeholder => "Web Design"}/
+              %input{ type:  "text", placeholder: "Web Design" }/
             .col-md-3
-              %input{ :type => "text", :placeholder => "UI"}/
+              %input{ type: "text", placeholder: "UI" }/
             .col-md-3
-              %input{ :type => "text", :placeholder => "Application"}/
+              %input{ type: "text", placeholder: "Application" }/
       .row.text-center.proto-btn
         =f.submit "Publish",class: "btn btn-lg btn-primary btn-block"
