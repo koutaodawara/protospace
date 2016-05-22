@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :product_find, only: [:show,:edit,:update,:destroy]
+  before_action :product_find, except: [:index,:new,:create]
   def index
     @products = Product.order("created_at DESC")
   end
