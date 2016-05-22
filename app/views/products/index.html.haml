@@ -14,32 +14,32 @@
 
 .container.proto-list
   .row
-    .col-sm-4.col-md-3.proto-content
-      - @products.each do |product|
+    - @products.each do |product|
+      .col-sm-4.col-md-3.proto-content
+        -if user_signed_in? && current_user.id == product.user_id
+          .dropdown.drop_menu_location
+            %button.btn.btn-default.dropdown-taggle{ id: "dropdownMenu", type: "button",  data: { toggle: "dropdown" } } ACTION
+            %ul.dropdown-menu{ aria: {labelledby: "dropdownMenu1"} }
+              %li
+                =link_to "Delete", product_path(product), rel: "nofollow", data: { method: "delete"}
+              %li
+                =link_to "Edit", edit_product_path(product)
+
         .thumbnail
           = image_tag(product.pictures.main[0].image) if product.pictures.main.first
-          -if user_signed_in? && current_user.id == product.user_id
-            .dropdown.drop_menu_location
-              %button.btn.btn-default{ id: "dropdownMenu", type: "button",  data: { toggle: "dropdown" } } ACTION
-              %ul.dropdown-menu{ aria: {labelledby: "dropdownMenu1"} }
-                %li
-                =link_to "Delete", product_path(product), rel: "nofollow", data: { method: "delete"}
-                %li
-                =link_to "Edit", edit_product_path(product)
-              .caption
-                %h3
-                  = link_to product.title,product_path(product.id)
-                .proto-meta
-                  .proto-user
-                    = product.user.nickname
-                  .proto-posted
-                    = product.created_at
-                %ul.proto-tag-list.list-inline
-                  %li 
-                    %a{ href: "#", class: "btn btn-default"} iPad
-                  %li 
-                    %a{ href: "#", class: "btn btn-default"} wireframe
-
+          .caption
+            %h3
+              = link_to product.title,product_path(product.id)
+            .proto-meta
+              .proto-user
+                = product.user.nickname
+              .proto-posted
+                = product.created_at
+          %ul.proto-tag-list.list-inline
+            %li 
+              %a{ href: "#", class: "btn btn-default"} iPade
+            %li 
+              %a{ href: "#", class: "btn btn-default"} wireframe
 .text-center
   %ul.pagination
     %li.disabled
