@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @pro_sub = @product.pictures.sub
+    @sub_img = @product.pictures.sub
   end
 
   def update
