@@ -8,6 +8,7 @@
 |:title     |
 |:catch_copy|
 |:concept   |
+|:like_count|
 |created_at |
 |updated_at |
 
