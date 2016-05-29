@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @like = current_user.likes.where(product_id: @product.id )
   end
 
   def edit
