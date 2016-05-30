@@ -2,17 +2,17 @@ class LikesController < ApplicationController
    before_action :product_find, only: [:create, :destroy]
 
   def create
-    @like = current_user.likes.create(argument)
+    @like = current_user.likes.create(like_params)
   end
 
   def destroy
-    @like = current_user.likes.find_by(argument)
+    @like = current_user.likes.find_by(like_params)
     @like.destroy
   end
 
 
 private
-  def argument
+  def like_params
     params.permit(:product_id)
   end
 
