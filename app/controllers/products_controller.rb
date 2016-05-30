@@ -20,8 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    if user_signed_in?
-      @like = current_user.likes.where(product_id: @product.id )
+      @like = current_user.likes.where(product_id: @product.id ),if user_signed_in?
     end
   end
 
