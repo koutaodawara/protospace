@@ -12,8 +12,8 @@ class LikesController < ApplicationController
     render 'likes/_compile'
   end
 
-
 private
+
   def like_params
     params.permit(:product_id)
   end
