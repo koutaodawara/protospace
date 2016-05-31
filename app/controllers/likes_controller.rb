@@ -3,11 +3,13 @@ class LikesController < ApplicationController
 
   def create
     @like = current_user.likes.create(like_params)
+    render 'likes/_compile'
   end
 
   def destroy
     @like = current_user.likes.find_by(like_params)
     @like.destroy
+    render 'likes/_compile'
   end
 
 
