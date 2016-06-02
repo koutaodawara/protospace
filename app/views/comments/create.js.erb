@@ -1,4 +1,4 @@
-$('#comments_counter').html('(<%= @product.comments.count %>)');
+$('#comments_counter').html('(<%= @comments.count %>)');
 $('#comments').html(
-  '<%= j(render partial: 'comments/comment', collection: @product.comments) %>');
+  '<%= j(render partial: 'comments/comment', collection: @comments) %>');
 $('#comments_area').val('');
