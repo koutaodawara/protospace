@@ -21,6 +21,8 @@ class ProductsController < ApplicationController
 
   def show
       @like = current_user.likes.where(product_id: @product.id ),if user_signed_in?
+      @comments = @product.comments
+      @comment = Comment.new
     end
   end
 
