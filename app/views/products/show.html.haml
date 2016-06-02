@@ -42,7 +42,7 @@
     %h4.col-md-12
       Comment
       %span.num#comments_counter
-        = "(#{@comments.count})"
+        = "(#{ @comments.count })"
     .col-md-8
       #comments
         = render partial: 'comments/comment', collection: @comments
