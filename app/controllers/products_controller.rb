@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :product_find, except: [:index,:new,:create]
   def index
-    @products = Product.order("created_at DESC")
+    @products = Product.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -20,8 +20,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-      @like = current_user.likes.where(product_id: @product.id ),if user_signed_in?
-    end
+      @like = current_user.likes.where(product_id: @product.id ) if user_signed_in?
+      @comments = @product.comments.includes(:user)
+      @comment = Comment.new(product_id: @product.id)
   end
 
   def edit

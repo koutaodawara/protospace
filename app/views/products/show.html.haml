@@ -26,11 +26,11 @@
     .col-md-3
       %h4 Catch Copy
       %p 
-      =@product.catch_copy
+      = @product.catch_copy
     .col-md-6
       %h4 Concept
-      %p 
-      =@product.concept
+      %p
+      = @product.concept
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
@@ -40,18 +40,18 @@
           %a{href: "#", class: "btn btn-default"} wireframe
   .row.proto-comments
     %h4.col-md-12
-      Comments
-      %span.num (10) 
+      Comment
+      %span.num#comments_counter
+        = "(#{ @comments.count })"
     .col-md-8
-      .media
-        .media-left
-          %a{href: "#"}
-            = image_tag(@product.user.avatar, alt: "64×64", class: "media-object", style: "width: 64px; height: 64px;")
-
-      %form.form-inline{role: "form"}
-        %h4 Write a comment
-        .row
-          .form-group.col-md-10
-            %textarea.form-control{placeholder: "Your comments", rows: "3"}
-          .form-group.col-md-2
-            %button.btn.btn-primary Comment
+      #comments
+        = render partial: 'comments/comment', collection: @comments
+      .form-inline
+      - if user_signed_in?
+        = form_for [@product, @comment], remote: true do |f|
+          %h4 Write a comment
+          .row
+            .form-group.col-md-10
+              = f.text_area :text, rows: "3", placeholder: "Your comments", id: "comments_area", class: "form-control"
+            .form-group.col-md-2
+              = f.submit "COMMENT", class: "button btn btn-primary"
