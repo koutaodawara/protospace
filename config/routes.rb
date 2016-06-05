@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
    namespace :products do
-    resources :rankings, only: :index
+    resources :sorted_products, only: :index
     resources :newests, only: :index
   end
   
