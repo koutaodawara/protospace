@@ -1,5 +1,5 @@
 class Products::SortedProductsController < ApplicationController
   def index
-    @products = Product.includes(:user).order('like_count DESC').limit(5)
+    @products = Product.includes(:user).page(params[:page]).per(5).order('like_count DESC')
   end
 end
