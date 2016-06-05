@@ -1,22 +1,22 @@
--if user_signed_in? && current_user.id == newest.user_id
+-if user_signed_in? && current_user.id == product.user_id
   .dropdown.drop_menu_location
     %button.btn.btn-default.dropdown-taggle{ id: "dropdownMenu", type: "button",  data: { toggle: "dropdown" } } ACTION
     %ul.dropdown-menu{ aria: { labelledby: "dropdownMenu1" } }
       %li
-        =link_to "Delete", product_path(newest), rel: "nofollow", data: { method: "delete" }
+        =link_to "Delete", product_path(product), rel: "nofollow", data: { method: "delete" }
       %li
-        =link_to "Edit", edit_product_path(newest)
+        =link_to "Edit", edit_product_path(product)
 
 .thumbnail
-  = image_tag(newest.pictures.main[0].image) if newest.pictures.main.first
+  = image_tag(product.pictures.main[0].image) if product.pictures.main.first
   .caption
     %h3
-      = link_to newest.title, product_path(newest.id)
+      = link_to product.title, product_path(product.id)
     .proto-meta
       .proto-user
-        = newest.user.nickname
+        = product.user.nickname
       .proto-posted
-        = newest.created_at
+        = product.created_at
   %ul.proto-tag-list.list-inline
     %li 
       %a{ href: "#", class: "btn btn-default" } iPade
