@@ -6,16 +6,15 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li.active{ role: "presentation" }
-          = link_to 'Popular PROTO', products_sorted_products_path
         %li{ role: "presentation" }
+          = link_to 'Popular PROTO', products_sorted_products_path
+        %li.active{ role: "presentation" }
           = link_to "Newest PROTO", products_newests_path
       %button{ type: "button", class: "btn btn-default col-lg-1" } View Tags
 
 .container.proto-list
   .row
-    .col-sm-4.col-md-3.proto-content
-      = render partial: 'products/product', collection: @products
+    = render partial: 'products/product', collection: @products
 .text-center
   %ul.pagination
     %li.active
