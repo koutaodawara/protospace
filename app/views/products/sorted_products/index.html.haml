@@ -14,8 +14,7 @@
 
 .container.proto-list
   .row
-    .col-sm-4.col-md-3.proto-content
-      = render partial: 'products/product', collection: @products
+    = render partial: 'products/product', collection: @products
 .text-center
   %ul.pagination
     %li.active
