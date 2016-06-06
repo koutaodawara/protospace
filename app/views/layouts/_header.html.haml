@@ -8,10 +8,9 @@
       = image_tag("logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "36px")
     .navbar-collapse.collapse.navbar-responsive-collapse
       -if user_signed_in?
-        = link_to "logout",destroy_user_session_path,method: :delete
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
-            %a.dropdown-toggle{aria: { expanded: "false"}, data: { toggle: "dropdown"},href: "#", role: "button"}
+            %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               =current_user.nickname
               %span.caret
             %ul.dropdown-menu{role: "menu"}
