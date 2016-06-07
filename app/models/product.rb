@@ -3,6 +3,8 @@ class Product < ActiveRecord::Base
   has_many :pictures, inverse_of: :product, dependent: :delete_all
   has_many :likes, dependent: :delete_all
   has_many :comments
+  acts_as_taggable
+  acts_as_taggable_on :things
   accepts_nested_attributes_for :pictures
   validates :title, :concept, :catch_copy, presence: true
 
