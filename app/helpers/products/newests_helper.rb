@@ -1,0 +1,2 @@
+module Products::NewestsHelper
+end

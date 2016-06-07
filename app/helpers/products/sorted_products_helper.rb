@@ -1,0 +1,2 @@
+module Products::SortedProductsHelper
+end

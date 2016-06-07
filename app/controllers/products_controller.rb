@@ -1,8 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :product_find, except: [:index,:new,:create]
-  def index
-    @products = Product.includes(:user).order("created_at DESC")
-  end
+  before_action :product_find, except: [:new,:create]
 
   def new
     @product= Product.new
