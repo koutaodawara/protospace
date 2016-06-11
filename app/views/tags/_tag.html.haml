@@ -1,0 +1,43 @@
+.jumbotron
+  .container.text-center
+    = image_tag("header_logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "73px")
+
+.filter-nav
+  .container
+    .row
+      %ul.nav.nav-pills.col-lg-11
+        %li{ role: "presentation" }
+          = link_to 'Popular PROTO', products_sorted_products_path
+        %li.active{ role: "presentation" }
+          = link_to "Newest PROTO", products_newests_path
+      = button_to "View Tags" ,tags_path, class: "btn btn-default col-lg-1"
+
+.container.proto-list
+  .row
+    .col-sm-4.col-md-3.proto-content
+      -if user_signed_in? && current_user.id == tag.user_id
+        .dropdown.drop_menu_location
+          %button.btn.btn-default.dropdown-taggle{ id: "dropdownMenu", type: "button",  data: { toggle: "dropdown" } } ACTION
+          %ul.dropdown-menu{ aria: { labelledby: "dropdownMenu1" } }
+            %li
+              =link_to "Delete", product_path(tag), rel: "nofollow", data: { method: "delete" }
+            %li
+              =link_to "Edit", edit_product_path(tag)
+      .thumbnail
+        = image_tag(tag.pictures.main[0].image) if tag.pictures.main.first
+        .caption
+          %h3
+            = link_to tag.title, product_path(tag.id)
+          .proto-meta
+            .proto-user
+              = tag.user.nickname
+            .proto-posted
+              = tag.created_at
+        %ul.proto-tag-list.list-inline
+          %li 
+            = button_to @tag, tag_path(tag.id), class: "btn btn-default"
+          %li 
+            = button_to @tag, tag_path(tag.id), class: "btn btn-default"
+.text-center
+  %ul.pagination
+    %li.active
