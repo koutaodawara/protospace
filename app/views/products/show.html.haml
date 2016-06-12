@@ -36,7 +36,6 @@
       %ul.proto-tag-list.list-inline
         -@tags.each do |tag|
           %li
-            -binding.pry
             =button_to tag.name, tag_path(tag.id), class: "btn btn-default"
   .row.proto-comments
     %h4.col-md-12

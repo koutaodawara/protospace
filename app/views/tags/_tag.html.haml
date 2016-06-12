@@ -27,15 +27,13 @@
         = image_tag(tag.pictures.main[0].image) if tag.pictures.main.first
         .caption
           %h3
-            = link_to tag.title, product_path(tag.id)
+            = link_to tag.title, product_path(tag)
           .proto-meta
             .proto-user
               = tag.user.nickname
             .proto-posted
               = tag.created_at
         %ul.proto-tag-list.list-inline
-          %li 
-            = button_to @tag, tag_path(tag.id), class: "btn btn-default"
           %li 
             = button_to @tag, tag_path(tag.id), class: "btn btn-default"
 .text-center
