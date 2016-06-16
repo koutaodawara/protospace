@@ -6,16 +6,16 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li.active{ role: "presentation" }
-          = link_to 'Popular PROTO', products_sorted_products_path
         %li{ role: "presentation" }
+          = link_to 'Popular PROTO', products_sorted_products_path
+        %li.active{ role: "presentation" }
           = link_to "Newest PROTO", products_newests_path
-      = link_to "View Tags" ,tags_path, type: "button", class: "btn btn-default col-lg-1"
+      = button_to "View Tags" ,tags_path, class: "btn btn-default col-lg-1"
 
 .container.proto-list
   .row
-    = render partial: 'products/product', collection: @products
+    = render partial: "products/product", collection: @tags
 .text-center
   %ul.pagination
     %li.active
-      = paginate @products
+      = paginate @tags
