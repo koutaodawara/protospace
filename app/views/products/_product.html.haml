@@ -18,6 +18,4 @@
         .proto-posted
           = product.created_at
     %ul.proto-tag-list.list-inline
-      -product.tags.each do |tag|
-        %li 
-          =button_to tag, tag_path(tag), class: "btn btn-default"
+      = render partial: "tags/tag", collection: @tags

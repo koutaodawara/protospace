@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tags = Product.tagged_with(ActsAsTaggableOn::Tag.find(params[:id]))
-    @tag = ActsAsTaggableOn::Tag.find(params[:id]).name
+    @tags = Product.tagged_with(ActsAsTaggableOn::Tag.find(params[:id])).page(params[:page]).per(5).order('like_count DESC')
+    @tag = ActsAsTaggableOn::Tag.find(params[:id])
   end
 end
