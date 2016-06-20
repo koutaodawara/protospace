@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 
   def new
     @product= Product.new
-    @product.pictures.build
+    @main_img = @product.pictures.build
+    @sub_img = 2.times{@product.pictures.build}
   end
 
   def create
