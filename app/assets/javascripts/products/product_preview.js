@@ -1,5 +1,4 @@
-$(function() {
-  $("[id = js-picture]").each(function() {
+$("[id = js-picture]").each(function() {
     const picture = $(this);
     const input = $(this).find('input[type=file]');
     input.change(function() {
@@ -18,4 +17,3 @@ $(function() {
       fileReader.readAsDataURL(file);
     })
   })
-})
