@@ -12,17 +12,19 @@
             = f.text_field :title, placeholder: "Title" 
       .row
         .col-md-12
-          .cover-image-upload#js-picture
+          .cover-image-upload
             = f.fields_for :pictures, @product.pictures.main[0] do |a|
-              = a.file_field :image
-              = a.hidden_field :status, value: "main"
+              #js-picture
+                = a.file_field :image
+                = a.hidden_field :status, value: "main"
         .col-md-12
-          %ul.proto-sub-list.list-group#js-picture
+          %ul.proto-sub-list.list-group
             = f.fields_for :pictures, @sub_img do |a|
               %li.list-group-item.col-md-4
                 .image-upload
-                  = a.file_field :image
-                  = a.hidden_field :status, value: "sub"
+                  #js-picture
+                    = a.file_field :image
+                    = a.hidden_field :status, value: "sub"
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
