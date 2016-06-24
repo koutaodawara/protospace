@@ -7,9 +7,10 @@
           .user-name_image.row
             .user-name.col-md-10
               =f.text_field :nickname, placeholder: "nickname"
-            .user-image.col-md-2#js-picture-edit
-              %button.btn.btn-primary Add image
-              = f.file_field :avatar, size: "64x64"
+            .user-image.col-md-2
+              #js-picture
+                %button.btn.btn-primary Add image
+                = f.file_field :avatar, size: "64x64"
           .user-email
             = f.email_field :email,placeholder: "email",autofocus: true
           .user-password
