@@ -8,8 +8,9 @@
           %h4#top-aligned-media.media-heading
             = @product.title
           .proto-user
-            %a{href: ""} by User
-            %span.degree we-b inc. Designer
+            = link_to @product.user.nickname, user_path(current_user)
+            %span.degree
+            = @product.user.profile
     .col-md-6.text-right#like-button
       = render 'likes/like'
   .row
@@ -22,6 +23,7 @@
         %li.list-group-item
           = image_tag(@product.pictures.sub[1].image, class: 'img-responsive')
         %li.list-group-item
+          = image_tag(@product.pictures.sub[2].image, class: 'img-responsive')
   .row.proto-description
     .col-md-3
       %h4 Catch Copy

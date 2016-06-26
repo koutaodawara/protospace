@@ -14,7 +14,7 @@
         = link_to product.title, product_path(product.id)
       .proto-meta
         .proto-user
-          = product.user.nickname
+          = link_to product.user.nickname, user_path(current_user)
         .proto-posted
           = product.created_at
     %ul.proto-tag-list.list-inline
