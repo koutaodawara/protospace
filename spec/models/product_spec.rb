@@ -8,6 +8,14 @@ describe Product do
     end
   end
 
+  describe 'with comment' do
+    it 'deletes comments when product is deleted' do
+      product = create(:product)
+      comment = create(:comment, product: product)
+      expect{product.destroy}.to change{ Comment.count }.by(-1)
+    end
+  end
+
   describe '#create' do
     context 'valid' do
       it "is valid with all information" do

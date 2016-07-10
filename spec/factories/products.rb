@@ -1,9 +1,10 @@
 FactoryGirl.define do
 
   factory :product do
-    catch_copy  "abe"
-    title       "kkk@gmail.com"
-    concept     "00000000"
+    title       { Faker::Name.name }
+    catch_copy  { Faker::Lorem.word }
+    concept     { Faker::Lorem.sentence }
+    created_at  { Faker::Time.between(2.days.ago, Date.today, :day) }
   end
 
 end
