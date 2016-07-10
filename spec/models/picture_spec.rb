@@ -1,9 +1,10 @@
 require 'rails_helper'
 
+
 describe Picture do
+  let(:product){ create(:product) }
   describe 'associations' do
     it 'is associated with a product' do
-      product = create(:product)
       picture = create(:picture, :main, product: product)
       expect(picture.product).to eq product
     end
@@ -11,7 +12,6 @@ describe Picture do
   describe '#create' do
     describe 'with valid attribute' do
       it 'is error' do
-        product = create(:product)
         picture = build(:picture, :main, product: product)
         expect(picture).to be_valid
     end
