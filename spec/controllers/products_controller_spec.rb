@@ -102,7 +102,6 @@ describe ProductsController do
 
      it 'deletes the product' do
       delete :destroy, id: product
-      binding.pry
       expect{product.destroy}.to change{ Product.count }.by(-1)
      end
 
