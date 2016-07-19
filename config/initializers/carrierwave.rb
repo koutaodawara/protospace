@@ -7,7 +7,7 @@ CarrierWave.configure do |config|
   }
 
     case Rails.env
-    when 'development', 'test'
+    when 'development'
         config.storage = :file
     when 'production'
         config.storage = :fog
