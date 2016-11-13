@@ -8,7 +8,8 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [600, 500]
   end
 
-  image = PictureUploader.new
-  image.store!('noimage-big.png')
+def default_url
+  'images/noimage-big.png'
+end
 
 end

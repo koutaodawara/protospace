@@ -7,11 +7,15 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :pictures
   validates :title, :concept, :catch_copy, presence: true
 
-    def reject_picture(attributed)
+  def reject_picture(attributed)
     attributed['image'].blank?
-    end
+  end
 
-    def extension_white_list
+  def extension_white_list
     %w(jpg jpeg gif png)
+  end
+
+  def like_function?(user)
+    likes.find_by(user_id: user.id)
   end
 end
