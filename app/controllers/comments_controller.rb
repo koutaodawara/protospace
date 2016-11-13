@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
-    current_user.comments.create(comment_permit)
+     @comment = current_user.comments.create(comment_permit)
+     @comments = @product.comments.includes(:user)
+
   end
 
   private
