@@ -8,14 +8,14 @@
         %li
           =link_to "Edit", edit_product_path(product)
   .thumbnail
-    = image_tag(product.pictures.main[0].image) if product.pictures.main.first
+    = link_to image_tag(product.pictures.main[0].image), product_path(product.id) if product.pictures.main.first
     .caption
       %h3
         = link_to product.title, product_path(product.id)
       .proto-meta
         .proto-user
-          = link_to product.user.nickname, user_path(current_user)
+          = link_to product.user.nickname, user_path(product.user.id)
         .proto-posted
-          = product.created_at
+          = product.created_at.strftime("%m-%d")
     %ul.proto-tag-list.list-inline
       = render partial: "tags/tag", collection: @tags

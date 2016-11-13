@@ -9,35 +9,37 @@
       %header.row.user-nav.row
         .col-md-12
           .proto-new-title
-            = f.text_field :title, placeholder: "Title" 
+            = f.text_field :title, placeholder: "Title"
       .row
         .col-md-12
           .cover-image-upload
             #js-picture
-              = f.fields_for :pictures, @main_img do |a|
+              = f.fields_for :pictures do |a|
                 = a.file_field :image
                 = a.hidden_field :status, value: "main"
+
         .col-md-12
           %ul.proto-sub-list.list-group
-            = f.fields_for :pictures, @sub_img do |a|
+            - 3.times do |i|
               %li.list-group-item.col-md-4
                 .image-upload
                   #js-picture
-                    = a.file_field :image
-                    = a.hidden_field :status, value: "sub"
+                    = f.fields_for :pictures do |a|
+                      = a.file_field :image
+                      = a.hidden_field :status, value: "sub"
+              / %li.list-group#add_new_form
+              /  .image-upload-plus
+              /     %span +
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
         .col-md-12
           = f.text_area :concept, placeholder: "Concept"
-        .col-md-12
+        .cNol-md-12
           %h4 Tag List
           .row
+          - Settings.optional_tags.each do |val|
             .col-md-3
-              = text_field_tag "product[tag][]", "", placeholder: "Web Design", maxlength: 6
-            .col-md-3
-              = text_field_tag "product[tag][]", "", placeholder: "UI",maxlength: 6
-            .col-md-3
-              = text_field_tag "product[tag][]", "",  placeholder: 'Application', maxlength: 6
+              = text_field_tag "product[tag_list][]", "", placeholder: val, maxlength: 6
       .row.text-center.proto-btn
         =f.submit "Publish",class: "btn btn-lg btn-primary btn-block"

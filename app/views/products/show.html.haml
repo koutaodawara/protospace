@@ -8,26 +8,23 @@
           %h4#top-aligned-media.media-heading
             = @product.title
           .proto-user
-            = link_to @product.user.nickname, user_path(current_user)
+            = link_to @product.user.nickname, user_path(@product.user.id)
             %span.degree
             = @product.user.profile
     .col-md-6.text-right#like-button
-      = render 'likes/like'
+      = render partial: 'likes/like', locals: { product: @product }
   .row
     .col-md-9
       = image_tag(@product.pictures.main[0].image, class: 'img-responsive')
     .col-md-3
       %ul.proto-sub-list.list-group
-        %li.list-group-item
-          = image_tag(@product.pictures.sub[0].image, class: 'img-responsive')
-        %li.list-group-item
-          = image_tag(@product.pictures.sub[1].image, class: 'img-responsive')
-        %li.list-group-item
-          = image_tag(@product.pictures.sub[2].image, class: 'img-responsive')
+        - 3.times do |i|
+          %li.list-group-item
+            = image_tag(@product.pictures.sub[i].image, class: 'img-responsive')
   .row.proto-description
     .col-md-3
       %h4 Catch Copy
-      %p 
+      %p
       = @product.catch_copy
     .col-md-6
       %h4 Concept
@@ -36,23 +33,21 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
-        -@tags.each do |tag|
+        - @product.tag_list.each do |tag|
           %li
-            =button_to tag.name, tag_path(tag.id), class: "btn btn-default"
+            = link_to tag, tag_path(tag), class: "btn btn-default"
   .row.proto-comments
     %h4.col-md-12
       Comment
       %span.num#comments_counter
         = "(#{ @comments.count })"
-    .col-md-8
-      #comments
-        = render partial: 'comments/comment', collection: @comments
-      .form-inline
-      - if user_signed_in?
-        = form_for [@product, @comment], remote: true do |f|
-          %h4 Write a comment
-          .row
-            .form-group.col-md-10
-              = f.text_area :text, rows: "3", placeholder: "Your comments", id: "comments_area", class: "form-control"
-            .form-group.col-md-2
-              = f.submit "COMMENT", class: "button btn btn-primary"
+    .col-md-8#comments
+      = render partial: 'comments/comment', collection:  @comments
+    - if user_signed_in?
+      = form_for [@product, @comment], remote: true do |f|
+        %h4 Write a comment
+        .row
+          .form-group.col-md-10
+            = f.text_area :text, rows: "3", placeholder: "Your comments", id: "comments_area", class: "form-control"
+          .form-group.col-md-2
+            = f.submit "COMMENT", class: "button btn btn-primary"

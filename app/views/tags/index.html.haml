@@ -1,8 +1,8 @@
 .container
-  .row
+  .row#content-height
     .tags-list
       %h2 Tags list
-      %ul
+      %ul#tag-list
         - @tags.each do |tag|
           %li.col-md-4
             = link_to "#{tag.name}", tag_path(tag), class: "btn btn-default"

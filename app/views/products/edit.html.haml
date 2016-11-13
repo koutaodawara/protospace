@@ -13,31 +13,32 @@
       .row
         .col-md-12
           .cover-image-upload
-            = f.fields_for :pictures, @product.pictures.main[0] do |a|
-              #js-picture
-                = a.file_field :image
-                = a.hidden_field :status, value: "main"
+            #js-picture
+              = f.fields_for :pictures, @main_img do |img|
+                = image_tag(img.object.image, style: "width: 730px; height: 500px;", id: "js-img-tag")
+                = img.file_field :image
+                = img.hidden_field :status, value: "main"
+
         .col-md-12
           %ul.proto-sub-list.list-group
-            = f.fields_for :pictures, @sub_img do |a|
+            = f.fields_for :pictures, @sub_img do |img|
               %li.list-group-item.col-md-4
                 .image-upload
                   #js-picture
-                    = a.file_field :image
-                    = a.hidden_field :status, value: "sub"
+                    = image_tag(img.object.image, style: "width: 213px; height: 200px;", id: "js-img-tag")
+                    = img.file_field :image
+                    = img.hidden_field :status, value: "sub"
+                    = img.hidden_field :id, value: img.object.id
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
         .col-md-12
           = f.text_area :concept, placeholder: "Concept"
-        .col-md-12
+        .cNol-md-12
           %h4 Tag List
           .row
+          - Settings.optional_tags.each do |val|
             .col-md-3
-              %input{ type:  "text", placeholder: "Web Design" }/
-            .col-md-3
-              %input{ type: "text", placeholder: "UI" }/
-            .col-md-3
-              %input{ type: "text", placeholder: "Application" }/
+              = text_field_tag "product[tag_list][]", "", placeholder: val, maxlength: 6
       .row.text-center.proto-btn
-        =f.submit "Publish", class: "btn btn-lg btn-primary btn-block"
+        =f.submit "Publish",class: "btn btn-lg btn-primary btn-block"
