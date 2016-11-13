@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'products/sorted_products#index'
   resources :users, only: [:show, :edit, :update]
-  resources :tags, only: [:index, :show]
+  resources :tags, only: [:index, :show], param: :name
   
 
    namespace :products do
